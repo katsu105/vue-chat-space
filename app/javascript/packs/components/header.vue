@@ -15,7 +15,8 @@
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    border-bottom: medium solid #000000;
+    border-bottom: solid 1px #000000;
+    width: 100vw;
     &__group-name {
       display: flex;
       &--text {
