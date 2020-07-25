@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+ *, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+.wrapper {
+  display: flex;
+  padding: 20px;
+  height: 100vh;
+}
+.main-wrapper {
+  margin-left: 30px;
+  position: relative;
+
+}
