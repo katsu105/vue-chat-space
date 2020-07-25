@@ -21,4 +21,10 @@
 .wrapper {
   display: flex;
   padding: 20px;
+  height: 100vh;
+}
+.main-wrapper {
+  margin-left: 30px;
+  position: relative;
+
 }
