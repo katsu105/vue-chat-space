@@ -7,9 +7,6 @@
     <div class="main__messages--message">
       メッセージです。
     </div>
-    <div class="main__messages--message">
-      メッセージです。
-    </div>
   </div>
 </div>
 
