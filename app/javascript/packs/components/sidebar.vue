@@ -1,36 +1,46 @@
 <template>
   <div class="sidebar">
-    <div class="sidebar__plus">+</div>
+    <div class="sidebar__plus">
+      <a href="/groups/new">+</a>
+    </div>
 
-    <div class="sidebar__group">
+    <div class="sidebar__group" v-for="group in groups" v-bind:id="'row_group_' + group.id" v-bind:key="group.id">
       <div class="sidebar__group--name">
-        チャットグループ名
+        <label v-bind:for="'group_' + group.id">{{ group.name }}</label>
       </div>
       <div class="sidebar__group--length">
         (2)
       </div>
     </div>
-
-    <div class="sidebar__group">
-      <div class="sidebar__group--name">
-        チャットグループ名
-      </div>
-      <div class="sidebar__group--length">
-        (2)
-      </div>
-    </div>
-
-    <div class="sidebar__group">
-      <div class="sidebar__group--name">
-        チャットグループ名
-      </div>
-      <div class="sidebar__group--length">
-        (2)
-      </div>
-    </div>
-
   </div>
 </template>
+
+
+<script>
+import axios from 'axios'
+export default {
+  data: function () {
+    return {
+      groups: []
+    }
+  },
+  mounted: function() {
+    this.fetchGroups();
+  },
+
+  methods: {
+    fetchGroups: function() {
+      axios.get('/api/groups').then((response) => {
+        for(var i = 0; i < response.data.groups.length; i++) {
+          this.groups.push(response.data.groups[i]);
+        }
+      }, (error) => {
+        console.log(error);
+      });
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   .sidebar {
