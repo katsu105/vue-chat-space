@@ -6,10 +6,7 @@
 
     <div class="sidebar__group" v-for="group in groups" v-bind:id="'row_group_' + group.id" v-bind:key="group.id">
       <div class="sidebar__group--name">
-        <label v-bind:for="'group_' + group.id">{{ group.name }}</label>
-      </div>
-      <div class="sidebar__group--length">
-        (2)
+        <a v-bind:href="'/groups/' + group.id">{{ group.name }}</a>
       </div>
     </div>
   </div>
