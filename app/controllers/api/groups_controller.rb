@@ -8,13 +8,21 @@ class Api::GroupsController < ApplicationController
   def new
   end
 
+  def show
+  end
+
   def create
     @group = Group.new(group_params)
     if @group.save
-      return redirect_to root_path
+      render json: @group
     else
       render json: @group.errors, status: :unprocessable_entity
     end
+  end
+
+  def search_group_name
+    @group = Group.find(params.permit(:group_id)[:group_id])
+    @group.name
   end
 
   private
