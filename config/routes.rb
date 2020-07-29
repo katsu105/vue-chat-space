@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :groups, only: [:new, :show]
 
   namespace :api, format: 'json' do
-    resources :groups, only: [:index, :show, :create, :update] do
+    resources :groups, only: [:index, :show, :create, :update, :destroy] do
       collection do
         get :search_group_name
       end
