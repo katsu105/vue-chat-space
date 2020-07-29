@@ -20,6 +20,12 @@ class Api::GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    @group = Group.find(params.permit(:id)[:id])
+    @group.destroy
+    redirect_to '/'
+  end
+
   def search_group_name
     @group = Group.find(params.permit(:group_id)[:group_id])
     @group.name

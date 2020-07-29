@@ -4,7 +4,7 @@
       <div class="header__group-name--text">{{ group_name }}</div>
       <div class="header__group-name--edit">編集</div>
     </div>
-    <div class="header__group-delete">
+    <div class="header__group-delete" v-on:click="deleteGroup">
       チャットグループを削除する
     </div>
   </div>
@@ -27,6 +27,14 @@
       var group_id = location.pathname.substr( 8 )
       axios.get('/api/groups/search_group_name',{ params: {group_id: group_id}}).then((response) => (this.group_name = response.data.group_name)
       );
+    },
+    deleteGroup: function() {
+      var group_id = location.pathname.substr( 8 )
+      axios.delete(`/api/groups/${group_id}`).then((response) => {
+        console.log('削除完了')
+      }, (error) => {
+        console.log(error);
+      });
     }
   }
 }
